@@ -1,0 +1,34 @@
+EX2
+
+Compter le nombre de noeuds et d'arrêtes d'un graph est assez simple. 
+Il suffit de compter le nombre de lignes pour les arrêtes (minus les #), et pour les noeuds, il suffit de garder uniquement une occurence de chaque élement de la première colonne avant de compter les lignes. 
+
+
+EX3
+
+En utilisant la commande awk, il est facile de trier les arrêtes par ordre (les nombres plus petits a gauche et plus grand a droite), et ensuite supprimer les doublons (ce qui enlève la direction du graph.
+
+
+EX4
+
+
+Pour la liste d'arrêtes, il suffit de lire ligne par ligne, et de tout stocker sans se poser de questions. 
+Pour la matrice d'adjacence, il suffit de faire un tableau de boolean pour chaque noeud, et si l'arrête existe, passer le boolean a 1.
+Pour l'array, l'idée est de stocker les voisins pour chaque noeud, afin d'avoir pour chaque noeud une liste (beaucoup plus petite que la matrice de boolean), comprenant ses voisins.
+
+
+EX5
+
+Pour BFS, 
+
+
+EX6
+
+On utilise un graph étant passé par ex3 afin d'avoir le bon formatage
+
+Afin de trouver les triangles, on récupère a partir d'un graph orienté dans un sens, et trié.
+On crée l'array d'adjacence a partir de ce graph, mais en ne rajoutant dans les voisins que les noeuds plus grands. Ainsi 1 sera dans les voisins de 0, mais 0 ne sera pas dans les voisins de 1. 
+Celà permet de ne pas compter les triangles 3 fois. 
+Ensuite, on prend un noeud u, et on regarde pour chaque voisin v, si il existe un noeud w qui est dans les voisins de u et v. 
+La liste d'adjacence est la structure la plus optimisée pour ce problème, vu qu'on a une liste des voisins directement utilisable. 
+On ajoute aussi a la structure une liste de taille noeudMax, afin de stocker les degrés de chaque noeud, pour pouvoir parcours plus facilmeent la liste des voisins. 

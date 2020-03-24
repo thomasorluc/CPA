@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+a=`sed -e "s/[' '|'\t']/\n/g" $1 | sort -gu | head`
+
+for va in $a
+do
+	./bfsPourcent $1 $va
+done
